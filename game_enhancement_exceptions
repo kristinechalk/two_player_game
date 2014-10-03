@@ -1,0 +1,25 @@
+Enhancement to your Game, with Exceptions
+Getting Familiar with Exceptions
+Prior to starting this exercise, you should read the following introductory writeups:
+
+http://rubylearning.com/satishtalim/ruby_exceptions.html
+http://www.skorks.com/2009/09/ruby-exceptions-and-exception-handling/
+As you read through these, I would suggest that you experiment with the code that they use as examples.
+
+Implement Custom Exceptions
+Rather than just having logical tests for whether answers are correct, or players being out of lives, implement custom exceptions for these events.
+
+The following are some custom exceptions that you could do:
+
+incorrect guess (InvalidGuessError)
+out of lives (PlayerDeadError)
+Tip
+
+You can raise RuntimeError exceptions for this exercise, at first. This is the simplest type of error to raise, because you can just use a string.
+
+Example:
+
+raise "Play out of turn!"
+Question: If this raises a RuntimeError exception class, what is the string used for?
+
+Once you have the RuntimeError exception performing correctly, implement a custom exception.
