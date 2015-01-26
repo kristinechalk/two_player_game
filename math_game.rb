@@ -1,6 +1,8 @@
 require 'colorize'
 require_relative 'player'
 
+require_relative 'custom_exception'
+
 class Game
 
   def create_player
@@ -19,6 +21,10 @@ class Game
   def player_name(num)
     puts "Please enter your player name: #{num}"
     player_name = gets.chomp.capitalize
+
+    if player_name.empty?
+      raise "Name cannot be empty."
+    end
   end
 
   def generate_question
@@ -42,6 +48,10 @@ class Game
 
   def get_answer
     @player_answer = gets.chomp.to_i
+
+    unless @player_answer.is_a? Numeric
+      raise InvalidGuessError 'Answer must be a number'
+    end
   end
 
   def verify_answer
@@ -79,7 +89,7 @@ class Game
       puts "\n#{@player1.name} you have won! Congratulations! You have #{@player1.points} points and #{@player1.lives} lives left."
       puts "\nUh oh! #{@player2.name}, you lose."
     elsif @player1.points == @player2.points
-      puts "\n#{@player1.name} and #{@player2.name} you have tied with {@player1.points} points."    
+      puts "\n#{@player1.name} and #{@player2.name} you have tied with #{@player1.points} points."    
     else 
       puts "\n#{@player2.name} you have won! Congratulations! You have #{@player2.points} points and #{@player2.lives} lives left."
       puts "\nUh oh! #{@player1.name}, you lose."
